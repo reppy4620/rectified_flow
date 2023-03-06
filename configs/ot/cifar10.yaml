@@ -1,0 +1,23 @@
+ds: cifar10
+output_dir: ../out/ot/${ds}
+
+image_key: img
+image_size: 32
+image_convert: RGB
+
+n_epoch: 20
+batch_size: 128
+save_interval: 10
+sampling_interval: 1
+gradient_clipping: 5
+
+loss: ot
+data_loader: basic
+
+model:
+  channels: 1
+  dim: 32
+  dim_mults: [1, 2, 4]
+
+optimizer:
+  lr: 1e-4

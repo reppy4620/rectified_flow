@@ -1,0 +1,24 @@
+ds: fashion_mnist
+output_dir: ../out/normal/${ds}
+
+image_key: image
+image_size: 28
+image_convert: L
+
+n_epoch: 10
+batch_size: 128
+save_interval: 10
+sampling_interval: 1
+gradient_clipping: 5
+
+loss: normal
+data_loader: basic
+
+model:
+  channels: 1
+  dim: 32
+  dim_mults: [1, 2, 4]
+
+optimizer:
+  lr: 1e-4
+

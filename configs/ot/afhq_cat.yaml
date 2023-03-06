@@ -1,0 +1,23 @@
+ds: huggan/AFHQv2
+output_dir: ../out/ot/${ds}
+
+image_key: img
+image_size: 128
+image_convert: RGB
+
+n_epoch: 300
+batch_size: 32
+save_interval: 50
+sampling_interval: 10
+gradient_clipping: 5
+
+loss: ot
+data_loader: afhq_cat
+
+model:
+  channels: 1
+  dim: 32
+  dim_mults: [1, 2, 4]
+
+optimizer:
+  lr: 1e-4
