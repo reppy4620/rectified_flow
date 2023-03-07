@@ -23,6 +23,7 @@ def basic(cfg):
 
 def afhq_cat(cfg):
     transform = T.Compose([
+        T.Resize((cfg.image_size, cfg.image_size)),
         T.RandomHorizontalFlip(),
         T.ToTensor(),
         T.Lambda(lambda t: (t * 2) - 1)

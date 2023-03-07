@@ -17,7 +17,7 @@ The Implementation of Rectified Flow model for study.
 - Normal
 
 $$
-L(\theta) = ||X_1 - X_0 - v_\theta(X_t, t)||_2
+L(\theta) = ||X_1 - X_0 - v_\theta(X_t, t)||_2^2
 $$
 
 - ot

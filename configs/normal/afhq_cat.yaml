@@ -15,9 +15,9 @@ loss: normal
 data_loader: afhq_cat
 
 model:
-  channels: 1
-  dim: 32
-  dim_mults: [1, 2, 4]
+  channels: 3
+  dim: 64
+  dim_mults: [1, 2, 4, 8]
 
 optimizer:
   lr: 1e-4
