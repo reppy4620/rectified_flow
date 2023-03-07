@@ -30,11 +30,9 @@ pip install torch torchvision torchaudio POT tqdm scipy einops datasets omegacon
 ```
 
 # Usage
-I prepared various configs for aforementioned datasets, but there is only script for training MNIST with Normal loss.
-You can create the script for other dataset or loss.
-
 
 ```
+# Example
 cd scripts
 bash normal_mnist.sh
 ```

@@ -45,6 +45,8 @@ def main():
         loss = loss_fn(model, x, t)
         return loss
 
+    noise = torch.randn(25, cfg.model.channels, cfg.image_size, cfg.image_size)
+    torch.save(noise, output_dir / 'noise.pth')
     tracker = Tracker(log_file=output_dir / 'loss.csv')
     for epoch in range(1, cfg.n_epoch + 1):
         bar = tqdm(dl, total=len(dl), desc=f'Epoch {epoch}: ')
@@ -66,8 +68,8 @@ def main():
             }, ckpt_dir / f'epoch_{epoch:05d}.pth')
         if epoch % cfg.sampling_interval == 0:
             model.eval()
-            images = sample_ode(model, cfg.image_size, channels=cfg.model.channels)
-            save_grid(images, img_dir / f'epoch_{epoch}.png')
+            images = sample_ode(model, noise)
+            save_grid(images, img_dir / f'epoch_{epoch}.png', nrow=5)
 
 
 if __name__ == '__main__':

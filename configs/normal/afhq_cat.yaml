@@ -1,7 +1,7 @@
 ds: huggan/AFHQv2
 output_dir: ../out/normal/${ds}
 
-image_key: img
+image_key: image
 image_size: 128
 image_convert: RGB
 

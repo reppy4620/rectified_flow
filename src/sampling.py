@@ -4,13 +4,12 @@ from scipy.integrate import solve_ivp
 
 
 @torch.no_grad()
-def sample_ode(model, image_size, batch_size=16, channels=1):
-    shape = (batch_size, channels, image_size, image_size)
+def sample_ode(model, noise):
+    shape = noise.shape
     device = next(model.parameters()).device
+    x = noise
 
     b = shape[0]
-    x = torch.randn(shape, device=device)
-    
     def ode_func(t, x):
         x = torch.tensor(x, device=device, dtype=torch.float).reshape(shape)
         t = torch.full(size=(b,), fill_value=t, device=device, dtype=torch.float).reshape((b,))

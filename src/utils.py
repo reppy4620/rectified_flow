@@ -70,11 +70,12 @@ class Tracker:
         return self.loss_tracker.get(key)
     
     def write(self, epoch, clear=True):
-        with open(self.log_file, self.mode) as f:
-            if epoch == 1:
+        if epoch == 1:
+            with open(self.log_file, self.mode) as f:
                 f.write(','.join(['epoch'] + list(self.loss_tracker.keys()))+'\n')
                 f.write(','.join([str(epoch)]+[str(v.mean()) for v in self.loss_tracker.values()])+'\n')
-            else:
+        else:
+            with open(self.log_file, 'a') as f:
                 f.write(','.join([str(epoch)]+[str(v.mean()) for v in self.loss_tracker.values()])+'\n')
 
         if clear:
