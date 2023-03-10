@@ -1,6 +1,7 @@
 #!/bin/bash
 
-output_dir=../out/normal/huggan/AFHQv2
+root_dir=../out/ot/huggan/AFHQv2
 
 python ../src/generate.py \
-    --output_dir $output_dir
+    --root_dir $root_dir \
+    --output_dir $root_dir/gen
