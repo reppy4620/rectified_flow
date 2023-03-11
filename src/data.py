@@ -17,7 +17,7 @@ def basic(cfg):
     ds = load_dataset(cfg.ds)
     transformed_ds = ds.with_transform(transforms).remove_columns("label")
 
-    dl = DataLoader(transformed_ds["train"], batch_size=cfg.batch_size, shuffle=True)
+    dl = DataLoader(transformed_ds["train"], batch_size=cfg.batch_size, shuffle=True, num_workers=8)
     return dl
 
 
@@ -36,7 +36,7 @@ def afhq_cat(cfg):
     ds = load_dataset(cfg.ds)
     transformed_ds = ds.filter(lambda x: x["label"] == 0).with_transform(transforms).remove_columns("label")
 
-    dl = DataLoader(transformed_ds["train"], batch_size=cfg.batch_size, shuffle=True)
+    dl = DataLoader(transformed_ds["train"], batch_size=cfg.batch_size, shuffle=True, num_workers=8)
     return dl
 
 

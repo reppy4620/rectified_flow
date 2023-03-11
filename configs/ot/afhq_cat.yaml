@@ -13,6 +13,7 @@ gradient_clipping: 5
 
 loss: ot
 data_loader: afhq_cat
+sampling: normal
 
 model:
   channels: 3

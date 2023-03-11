@@ -13,7 +13,7 @@ gradient_clipping: 5
 
 loss: ot
 data_loader: basic
-sampling: normal
+sampling: with_noise
 
 model:
   channels: 1

@@ -1,11 +1,11 @@
-ds: mnist
+ds: cifar10
 output_dir: ../out/ot/${ds}
 
-image_key: image
-image_size: 28
-image_convert: L
+image_key: img
+image_size: 32
+image_convert: RGB
 
-n_epoch: 10
+n_epoch: 20
 batch_size: 128
 save_interval: 10
 sampling_interval: 1
@@ -13,7 +13,7 @@ gradient_clipping: 5
 
 loss: ot
 data_loader: basic
-sampling: normal
+sampling: with_noise
 
 model:
   channels: 1
@@ -22,4 +22,3 @@ model:
 
 optimizer:
   lr: 1e-4
-

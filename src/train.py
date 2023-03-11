@@ -7,7 +7,7 @@ from argparse import ArgumentParser
 from omegaconf import OmegaConf
 
 from model import Unet
-from sampling import sample_ode
+from sampling import get_sampling_fn
 from loss import get_loss_fn
 from data import get_data_loader
 from utils import seed_everything, Tracker, save_grid
@@ -36,6 +36,7 @@ def main():
 
     loss_fn = get_loss_fn(cfg.loss)
     dl = get_data_loader(cfg)
+    sampling = get_sampling_fn(cfg.sampling)
 
     def handle_batch(batch):
         batch_size = batch["pixel_values"].shape[0]
@@ -68,7 +69,7 @@ def main():
             }, ckpt_dir / f'epoch_{epoch:05d}.pth')
         if epoch % cfg.sampling_interval == 0:
             model.eval()
-            images = sample_ode(model, noise)
+            images = sampling(model, noise)
             save_grid(images, img_dir / f'epoch_{epoch}.png', nrow=5)
 
 

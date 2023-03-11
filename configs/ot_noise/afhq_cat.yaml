@@ -1,5 +1,5 @@
 ds: huggan/AFHQv2
-output_dir: ../out/normal/${ds}
+output_dir: ../out/ot_noise/${ds}
 
 image_key: image
 image_size: 128
@@ -11,9 +11,9 @@ save_interval: 50
 sampling_interval: 10
 gradient_clipping: 5
 
-loss: normal
+loss: ot_noise
 data_loader: afhq_cat
-sampling: normal
+sampling: with_noise
 
 model:
   channels: 3

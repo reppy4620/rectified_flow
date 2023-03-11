@@ -5,7 +5,7 @@ from argparse import ArgumentParser
 from omegaconf import OmegaConf
 
 from model import Unet
-from sampling import sample_ode
+from sampling import get_sampling_fn
 from utils import seed_everything, save_grid
     
 
@@ -33,9 +33,11 @@ def main():
     model.eval()
     epoch = ckpt['epoch']
 
+    sampling = get_sampling_fn(cfg.sampling)
+
     for n in tqdm(range(args.num_generate)):
         noise = torch.randn(25, cfg.model.channels, cfg.image_size, cfg.image_size)
-        images = sample_ode(model, noise, method=args.method)
+        images = sampling(model, noise, method=args.method)
         save_grid(images, output_dir / f'gen-{n+1}_epoch_{epoch}.png', nrow=5)
 
 
